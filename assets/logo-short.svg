@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Logo curta Calcagnoto">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3d78e"/>
+      <stop offset="100%" stop-color="#a3894c"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="508" height="508" rx="48" fill="#171f36" stroke="url(#gold)" stroke-width="4"/>
+  <path d="M422 130 C338 45 188 45 103 130 C4 229 4 283 103 382 C188 467 338 467 422 382" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M342 161 C284 114 206 114 156 161 C92 221 92 291 156 351 C206 398 284 398 342 351" fill="none" stroke="url(#gold)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M232 97 C260 63 321 58 362 94" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
+</svg>
