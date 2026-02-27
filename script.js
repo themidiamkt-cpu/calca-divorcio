@@ -137,30 +137,84 @@ window.addEventListener("resize", () => {
 
 const contactForm = document.getElementById("contactForm");
 const formFeedback = document.getElementById("formFeedback");
+const contactWebhookUrl = "https://automacao.themidiamarketing.com.br/webhook-test/form-calca";
 
 if (contactForm && formFeedback) {
   const requiredFields = contactForm.querySelectorAll("[required]");
+  const submitButton = contactForm.querySelector('button[type="submit"]');
 
-  contactForm.addEventListener("submit", (event) => {
+  const setSubmittingState = (isSubmitting) => {
+    if (!submitButton) return;
+    submitButton.disabled = isSubmitting;
+    submitButton.style.opacity = isSubmitting ? "0.7" : "1";
+    submitButton.style.pointerEvents = isSubmitting ? "none" : "auto";
+  };
+
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
     let isValid = true;
 
     requiredFields.forEach((field) => {
       if (!field.checkValidity()) {
         isValid = false;
+        field.setAttribute("aria-invalid", "true");
       }
     });
 
     if (!isValid) {
-      event.preventDefault();
       formFeedback.textContent = "Preencha os campos obrigatórios para agendar a análise.";
       return;
     }
 
-    formFeedback.textContent = "Solicitação pronta para envio.";
+    const formData = new FormData(contactForm);
+    const payload = {
+      nome: String(formData.get("nome") || "").trim(),
+      telefone: String(formData.get("telefone") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      mensagem: String(formData.get("mensagem") || "").trim(),
+      origem: window.location.href,
+      timestamp: new Date().toISOString()
+    };
+
+    setSubmittingState(true);
+    formFeedback.textContent = "Enviando...";
+
+    try {
+      const response = await fetch(contactWebhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) throw new Error(`Webhook retornou status ${response.status}`);
+
+      formFeedback.textContent = "Solicitação enviada com sucesso. Em breve entraremos em contato.";
+      contactForm.reset();
+    } catch (error) {
+      try {
+        await fetch(contactWebhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=UTF-8"
+          },
+          body: JSON.stringify(payload)
+        });
+        formFeedback.textContent = "Solicitação enviada com sucesso. Em breve entraremos em contato.";
+        contactForm.reset();
+      } catch (fallbackError) {
+        formFeedback.textContent = "Não foi possível enviar agora. Tente novamente ou fale no WhatsApp.";
+      }
+    } finally {
+      setSubmittingState(false);
+    }
   });
 
   requiredFields.forEach((field) => {
     field.addEventListener("input", () => {
+      field.removeAttribute("aria-invalid");
       formFeedback.textContent = "";
     });
   });
