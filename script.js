@@ -162,7 +162,7 @@ if (contactForm && formFeedback) {
     });
 
     if (!isValid) {
-      formFeedback.textContent = "Preencha os campos obrigatórios para agendar a análise.";
+      formFeedback.textContent = "Preencha os campos obrigatórios para agendar a avaliação.";
       return;
     }
 

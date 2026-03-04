@@ -1,0 +1,24 @@
+{
+  "redirects": [
+    {
+      "source": "/pensao",
+      "destination": "/advogado-divorcio",
+      "permanent": true
+    },
+    {
+      "source": "/pensao/:path*",
+      "destination": "/advogado-divorcio",
+      "permanent": true
+    },
+    {
+      "source": "/pensao-alimenticia",
+      "destination": "/advogado-divorcio",
+      "permanent": true
+    },
+    {
+      "source": "/pensao-alimenticia/:path*",
+      "destination": "/advogado-divorcio",
+      "permanent": true
+    }
+  ]
+}
