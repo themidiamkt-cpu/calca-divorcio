@@ -25,6 +25,31 @@
   <meta name="twitter:description" content="Precisa de advogado de divórcio? Atuamos em divórcio consensual e litigioso, partilha de bens, guarda dos filhos e pensão. Orientação jurídica clara e estratégica." />
   <meta name="twitter:image" content="https://calcagnoto-pensao.vercel.app/assets/og-logo.png?v=2" />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16724987587"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-16724987587');
+  </script>
+  <!-- Event snippet for Contato conversion page -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-16724987587/vsArCJ-ZqNsZEMOdjKc-',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -118,7 +143,7 @@
         <a href="#atuacao">Atuação</a>
         <a href="#sobre">Escritório</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="https://wa.me/5519996391615" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="nav-cta" href="https://wa.me/5519996391615" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);">Falar no WhatsApp</a>
       </nav>
     </div>
   </header>
@@ -142,7 +167,7 @@
             <li>Partilha de bens com segurança</li>
           </ul>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5519996391615" target="_blank" rel="noopener"><span>Falar no WhatsApp</span></a>
+            <a class="btn btn-primary" href="https://wa.me/5519996391615" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);"><span>Falar no WhatsApp</span></a>
             <a class="btn btn-outline" href="#contato"><span>Agendar consulta</span></a>
           </div>
         </div>
@@ -201,7 +226,7 @@
           </article>
         </div>
         <div class="section-cta">
-          <a class="btn btn-primary" href="https://wa.me/5519996391615" target="_blank" rel="noopener"><span>Quero orientação sobre meu divórcio</span></a>
+          <a class="btn btn-primary" href="https://wa.me/5519996391615" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);"><span>Quero orientação sobre meu divórcio</span></a>
         </div>
       </div>
     </section>
@@ -392,7 +417,7 @@
         <p><strong>Email:</strong> <a href="mailto:calcagnoto.adv@gmail.com">calcagnoto.adv@gmail.com</a></p>
       </div>
       <div>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/5519996391615" target="_blank" rel="noopener">(19) 99639-1615</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/5519996391615" target="_blank" rel="noopener" onclick="return gtag_report_conversion(this.href);">(19) 99639-1615</a></p>
       </div>
       <div>
         <p><strong>Redes:</strong></p>
